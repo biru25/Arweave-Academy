@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: About
+description: About biru25 - Web3 node operator and permaweb explorer.
+permalink: /about/
+---
+<section class="page-head">
+    <span class="chip">About</span>
+    <h1>About this blog</h1>
+    <p class="lead">
+        Hi, I'm <strong>biru25</strong>. I run nodes, build dApps, and spend
+        a lot of time in the Arweave and AO ecosystems. This blog is where
+        I write down what I learn -- permanently.
+    </p>
+</section>
+
+<section class="prose">
+    <h2>How this site is built</h2>
+    <p>
+        Every page you're reading was generated at build time by
+        <a href="https://www.11ty.dev" target="_blank" rel="noopener">Eleventy</a>,
+        a zero-config static site generator. Markdown posts under
+        <code>src/posts/</code> get compiled into clean HTML, then the whole
+        <code>dist/</code> folder gets uploaded to Arweave through the free
+        <a href="https://www.npmjs.com/package/@ardrive/turbo-sdk" target="_blank" rel="noopener">Turbo SDK</a>
+        with a path manifest so that routes like <code>/blog/</code>,
+        <code>/about/</code>, and individual post URLs all resolve from a
+        single manifest transaction.
+    </p>
+
+    <h2>Tech stack</h2>
+    <ul>
+        <li><strong>Eleventy</strong> -- static site generator</li>
+        <li><strong>Nunjucks + Markdown</strong> -- templating &amp; content</li>
+        <li><strong>Plain CSS</strong> -- custom dark theme, no frameworks</li>
+        <li><strong>Arweave + Turbo SDK</strong> -- permanent hosting</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+        Find me on <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub @biru25</a>
+        or email <a href="mailto:birulangit91@gmail.com">birulangit91@gmail.com</a>.
+    </p>
+</section>

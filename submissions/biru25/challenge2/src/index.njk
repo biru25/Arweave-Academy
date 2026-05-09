@@ -1,0 +1,51 @@
+---
+layout: base.njk
+title: Home
+description: Personal static blog about the permaweb, by biru25. Built with Eleventy and deployed to Arweave.
+---
+<section class="hero">
+    <span class="chip">Stored permanently on Arweave</span>
+    <h1>
+        Notes from the <span class="gradient">permaweb</span>.
+    </h1>
+    <p class="lead">
+        {{ site.tagline }}
+    </p>
+    <div class="cta-row">
+        <a href="/blog/" class="btn btn-primary">Read the blog</a>
+        <a href="/about/" class="btn btn-ghost">About me</a>
+    </div>
+</section>
+
+<section class="latest">
+    <h2>Latest posts</h2>
+    <ul class="post-list">
+        {% for post in collections.post | reverse %}
+            <li>
+                <a href="{{ post.url }}" class="post-link">
+                    <span class="post-date">{{ post.date | readableDate }}</span>
+                    <span class="post-title">{{ post.data.title }}</span>
+                    <span class="post-summary">{{ post.data.summary }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="why">
+    <h2>Why static on Arweave?</h2>
+    <div class="why-grid">
+        <div>
+            <h3>1. No server to maintain</h3>
+            <p>Eleventy renders all pages at build time. The output is just HTML -- AR.IO gateways can serve it directly.</p>
+        </div>
+        <div>
+            <h3>2. Permanent by design</h3>
+            <p>Once uploaded, every post becomes an Arweave transaction. It cannot be deleted, edited, or censored.</p>
+        </div>
+        <div>
+            <h3>3. Fast &amp; cheap</h3>
+            <p>Static files are tiny. Uploading via Turbo SDK is free for files under 100 KiB.</p>
+        </div>
+    </div>
+</section>

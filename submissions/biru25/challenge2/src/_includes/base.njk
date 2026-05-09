@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ description or site.tagline }}" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="brand">
+            <span class="brand-mark">biru<span class="accent">25</span></span>
+            <span class="brand-tag">permaweb notes</span>
+        </a>
+        <nav class="nav">
+            <a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a>
+            <a href="/blog/" class="nav-link{% if page.url.startsWith('/blog') or page.url.startsWith('/posts') %} active{% endif %}">Blog</a>
+            <a href="/about/" class="nav-link{% if page.url == '/about/' %} active{% endif %}">About</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {{ content | safe }}
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; {% year %} {{ site.author }} -- stored permanently on Arweave.</p>
+        <p class="small">Built with <a href="https://www.11ty.dev" target="_blank" rel="noopener">Eleventy</a>. Submitted for Arweave Academy Challenge 2.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: Blog
+description: All posts by biru25 about Arweave, AO, and the permaweb.
+permalink: /blog/
+---
+<section class="page-head">
+    <span class="chip">Blog</span>
+    <h1>All posts</h1>
+    <p class="lead">Notes, tutorials, and experiments from the permaweb.</p>
+</section>
+
+<ul class="post-list">
+    {% for post in collections.post | reverse %}
+        <li>
+            <a href="{{ post.url }}" class="post-link">
+                <span class="post-date">{{ post.date | readableDate }}</span>
+                <span class="post-title">{{ post.data.title }}</span>
+                <span class="post-summary">{{ post.data.summary }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
