@@ -1,0 +1,16 @@
+{
+  "name": "biru25-challenge1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "File-based Routing portfolio deployed to Arweave",
+  "type": "module",
+  "scripts": {
+    "build": "node -e \"const fs=require('fs');fs.rmSync('site',{recursive:true,force:true});fs.mkdirSync('site');fs.mkdirSync('site/assets');['index.html','about.html','projects.html','contact.html'].forEach(f=>fs.copyFileSync(f,'site/'+f));fs.copyFileSync('assets/style.css','site/assets/style.css');console.log('built ./site/');\"",
+    "serve": "npx --yes serve site",
+    "deploy": "npm run build && node deploy.mjs"
+  },
+  "dependencies": {
+    "@ardrive/turbo-sdk": "^1.21.0",
+    "mime-types": "^2.1.35"
+  }
+}
