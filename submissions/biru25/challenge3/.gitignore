@@ -1,0 +1,7 @@
+node_modules/
+dist/
+key.json
+manifest.json
+deployment-id
+.DS_Store
+*.log
