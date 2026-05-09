@@ -53,32 +53,64 @@ Then open `http://localhost:8080/`.
 
 ---
 
-## Deployment to Arweave via Dragondeploy
+## Deployment to Arweave
+
+You can deploy with either a GUI (easy) or the included CLI script (one
+command, repeatable).
+
+### Option A -- Dragondeploy (no-code, easiest)
 
 [Dragondeploy](https://dragondeploy.xyz) is the easiest no-code way to push
-a static folder onto Arweave permanently.
+a static folder onto Arweave.
 
-### Prerequisites
+1. Open [https://dragondeploy.xyz](https://dragondeploy.xyz) and click
+   **Connect Wallet** (ArConnect or arweave.app).
+2. Drag-and-drop this `challenge1/` folder (excluding `node_modules/`,
+   `site/`, `key.json`, `manifest.json`, `deployment-id`).
+3. Approve the upload transaction in your wallet.
+4. Copy the manifest TX ID shown after upload. Visit
+   `https://arweave.net/<TX_ID>/`.
 
-1. An Arweave wallet with some AR balance. Recommended:
-   [ArConnect](https://www.arconnect.io/) browser extension or
-   [arweave.app](https://arweave.app/).
-2. The `challenge1/` folder from this submission on your computer.
+### Option B -- CLI with Turbo SDK (recommended, repeatable)
 
-### Steps
+This folder ships with a small `deploy.mjs` script using the free
+[`@ardrive/turbo-sdk`](https://www.npmjs.com/package/@ardrive/turbo-sdk)
+(files under 100 KiB are free on Turbo).
 
-1. Open [https://dragondeploy.xyz](https://dragondeploy.xyz) in your browser.
-2. Click **Connect Wallet** and connect your Arweave wallet.
-3. Click **Select Folder** (or drag &amp; drop) and choose this
-   `challenge1/` directory. Dragondeploy will list all files that will be
-   uploaded -- `index.html`, `about.html`, `projects.html`, `contact.html`,
-   `challenge1.md`, `README.md`, and everything under `assets/`.
-4. Review the estimated upload cost in AR. Approve the transaction in your
-   wallet when prompted.
-5. Wait for the upload to finish. Dragondeploy will show a manifest
-   transaction ID that points to your `index.html` as the default page.
-6. Visit `https://arweave.net/<TX_ID>/` in your browser. You should see the
-   home page; clicking the nav should navigate between the other pages.
+**Prerequisites**
+
+- [Node.js 18+](https://nodejs.org)
+- An Arweave wallet JWK. In ArConnect: Settings -> Wallets -> Export Key ->
+  save as `key.json` in this folder. (The file is git-ignored so you don't
+  leak it.)
+
+**Steps**
+
+```bash
+# from this challenge1/ folder
+npm install            # installs turbo-sdk + mime-types
+npm run deploy         # builds ./site/ and uploads to Arweave
+```
+
+You'll see output like:
+
+```
+[1/3] Uploading files from ./site/ ...
+  + index.html     ->  <tx1>
+  + about.html     ->  <tx2>
+  + projects.html  ->  <tx3>
+  + contact.html   ->  <tx4>
+  + assets/style.css -> <tx5>
+
+[2/3] Building Arweave path manifest ...
+[3/3] Uploading manifest ...
+
+Done! Deployed to Arweave.
+  https://arweave.net/<MANIFEST_TX_ID>/
+```
+
+The final `MANIFEST_TX_ID` is saved to `./deployment-id`. Paste it into the
+top of this README next to the "Live Deployment" section.
 
 ### Optional: Register an ArNS Name
 
