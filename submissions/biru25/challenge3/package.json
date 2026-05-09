@@ -1,0 +1,25 @@
+{
+  "name": "biru25-challenge3",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Client-Side Rendering SPA on Arweave (React + Vite + React Router)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "deploy": "npm run clean && npm run build && node deploy-website.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0"
+  },
+  "devDependencies": {
+    "@ardrive/turbo-sdk": "^1.21.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "mime-types": "^2.1.35",
+    "vite": "^5.4.0"
+  }
+}
